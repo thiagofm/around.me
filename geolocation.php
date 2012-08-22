@@ -20,11 +20,13 @@
   $mygeolocation->channelId = 'global';
   $mytrigger1 = $mygeolocation->triggers->add('getGeolocation');
   
-  // markup writer
-  echo $xrtml->toXRTML();
+  
 
   // message handler
   $myexecute = $xrtml->addTag('execute');
   $myexecute->callback = 'geolocationCallBack';
   $mytrigger1 = $myexecute->triggers->add('getGeolocation');
+
+  // markup writer
+  echo $xrtml->toXRTML();
 ?>
