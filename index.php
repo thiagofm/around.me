@@ -1,4 +1,5 @@
 <?php include('geolocation.php'); ?>
+<?php echo "hi"; ?>
 <!doctype html>
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
 <!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
@@ -30,12 +31,6 @@
     <div id="feed">
       <div class="content">
         <p><span class="time">10:11</span> <span class="user">Anonymous</span> Hey, see me here!</p>
-        <p><span class="time">10:11</span> <span class="user">Anonymous</span> Hey, see me here!</p>
-        <p><span class="time">10:11</span> <span class="user">Anonymous</span> Hey, see me here!</p>
-        <p><span class="time">10:11</span> <span class="user">Anonymous</span> Hey, see me here!</p>
-        <p><span class="time">10:11</span> <span class="user">Anonymous</span> Hey, see me here!</p>
-        <p><span class="time">10:11</span> <span class="user">Anonymous</span> Hey, see me here!</p>
-        <p><span class="time">10:11</span> <span class="user">Anonymous</span> Hey, see me here!</p>
       </div><!-- end div.content -->
     </div><!-- end div#feed -->
   </div><!-- end div#main -->
@@ -54,7 +49,7 @@
     src="http://maps.googleapis.com/maps/api/js?key=AIzaSyA6O6CoNsT22DxgvNFgKWSHJOJLhP0lJAI&sensor=true">
   </script>
 
-  <script src="js/libs/jquery.nicescroll.min.js"></script>
+  <script src="js/plugins.js"></script>
   <script src="js/script.js"></script>
 
 </body>
