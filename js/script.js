@@ -113,3 +113,12 @@ function start_contact(){
 		return false;
 	});
 }
+
+/*
+ * GEOLOCATION - realtime.co
+ */
+
+function geolocationCallBack(message) {
+    console.log(message.data.latitude);
+    console.log(message.data.longitude);
+}
