@@ -11,6 +11,7 @@ $(document).ready(function() {
 	start_form();
 	start_map();
 	start_utils();
+  
 });
 
 /*#########################################
@@ -59,6 +60,8 @@ function start_map() {
           title: 'You are here!'
         });
 
+        ajaxAuth(position.coords.latitude, position.coords.longitude);
+
         /* Ballon
         var infowindow = new google.maps.InfoWindow({
           map: map,
@@ -90,6 +93,8 @@ function handleNoGeolocation(errorFlag) {
 	  content: content
 	};
 
+  ajaxAuth(60,105);
+
 	var infowindow = new google.maps.InfoWindow(options);
 	map.setCenter(options.position);
 }
@@ -100,6 +105,31 @@ function handleNoGeolocation(errorFlag) {
 
 function start_utils() {
 	$("#feed").niceScroll("#feed .content");
+}
+
+function add_message(data){
+  var pos = new google.maps.LatLng(data.lat, data.lng);
+  var infowindow = new google.maps.InfoWindow({
+    map: map,
+    position: pos,
+    content: '<b>' + data.username + '</b>: '+ data.message
+  });
+}
+
+
+/*#########################################
+ * AJAXES
+ *########################################*/
+
+function ajaxAuth(lat,lng){
+  $.post('auth.php',
+    {latitude: lat, longitude: lng}, function(data){
+      var obj = jQuery.parseJSON(data);
+      console.log(data);
+      $.each(obj.mensagens,function(index,value){
+        add_message(value);
+      });
+  });
 }
 
 /*#########################################
@@ -127,7 +157,21 @@ function start_contact(){
  * GEOLOCATION - realtime.co
  */
 
-function geolocationCallBack(message) {
-    console.log(message.data.latitude);
-    console.log(message.data.longitude);
-}
+//var latitude;
+//var longitude;
+//var id;
+
+//function geolocationCallBack(message) {
+  //latitude = message.data.latitude;
+  //longitude = message.data.longitude;
+  //id = message.data.id;
+  //xRTML.sendMessage('global','Hello Realtime');
+//}
+
+//function onMessage(message){
+  //console.log(message);
+//}
+
+//$.post('mensagem.php',funciton(){
+
+//});
