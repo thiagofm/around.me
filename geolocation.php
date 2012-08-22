@@ -7,7 +7,7 @@
   $xrtml->config->debug = false;
   $myconnection1 = $xrtml->config->connections->add('myConnection');
   $myconnection1->url = 'http://developers2.realtime.livehtml.net/server/2.1/';
-  $myconnection1->appKey = 'key8vVZJN';
+  $myconnection1->appKey = '8vVZJN';
   $myconnection1->authToken = 'key5aeXQtPISzb2';
   $mychannel1 = $myconnection1->channels->add('global');
 
@@ -20,13 +20,10 @@
   $mygeolocation->channelId = 'global';
   $mytrigger1 = $mygeolocation->triggers->add('getGeolocation');
   
-  
-
   // message handler
   $myexecute = $xrtml->addTag('execute');
   $myexecute->callback = 'geolocationCallBack';
   $mytrigger1 = $myexecute->triggers->add('getGeolocation');
 
-  // markup writer
   echo $xrtml->toXRTML();
 ?>
