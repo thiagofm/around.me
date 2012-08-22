@@ -8,3 +8,10 @@ Request token URL	https://api.twitter.com/oauth/request_token
 Authorize URL	https://api.twitter.com/oauth/authorize
 Access token URL	https://api.twitter.com/oauth/access_token
 Callback URL	None
+
+
+meu access token
+
+Access token	93538794-zwXooXlebpitqt3vAfBbHU4jq77hyf1yLHkuhs3cP
+Access token secret	FVg71l8R1btsMyhaFt37rurRDzBuLrA9P2QzbHqKN4
+Access level	Read-only
