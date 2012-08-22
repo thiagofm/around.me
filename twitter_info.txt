@@ -1,0 +1,10 @@
+Twitter - around me!
+
+Access level	 Read-only 
+About the application permission model
+Consumer key	ZC8ExpPONCxpqzKYAI6yqw
+Consumer secret	a5G4fL7n7vR87EQ7VUgfiEEw71APgEVD0evWfjI
+Request token URL	https://api.twitter.com/oauth/request_token
+Authorize URL	https://api.twitter.com/oauth/authorize
+Access token URL	https://api.twitter.com/oauth/access_token
+Callback URL	None
