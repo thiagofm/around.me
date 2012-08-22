@@ -26,6 +26,7 @@
   $myexecute->callback = 'geolocationCallBack';
   $mytrigger1 = $myexecute->triggers->add('getGeolocation');
 
+<<<<<<< HEAD
   // test
   $myexecute1 = $xrtml->addTag('execute');
   $myexecute1->callback = 'geolocationCallBack';
@@ -46,3 +47,7 @@
 
 
 
+=======
+  echo $xrtml->toXRTML();
+?>
+>>>>>>> 15f14b51ef17425fb75511ca0794bcb961629aa3
