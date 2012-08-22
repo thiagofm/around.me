@@ -10,6 +10,7 @@ $(document).ready(function() {
 	//start_contact();
 	start_form();
 	start_map();
+	start_utils();
 });
 
 /*#########################################
@@ -91,6 +92,14 @@ function handleNoGeolocation(errorFlag) {
 
 	var infowindow = new google.maps.InfoWindow(options);
 	map.setCenter(options.position);
+}
+
+/*#########################################
+ * UTILS
+ *########################################*/
+
+function start_utils() {
+	$("#feed").niceScroll("#feed .content");
 }
 
 /*#########################################
