@@ -13,8 +13,8 @@
 
 return 
 	array(
-		//"base_url" => "http://192.168.88.176/aroundme/hybridauth/", 
-		"base_url" => "http://localhost/aroundme/hybridauth/", 
+		"base_url" => "http://tinyurl.com/mearound/hybridauth/", 
+		//"base_url" => "http://localhost/aroundme/hybridauth/", 
 
 		"providers" => array ( 
 			// openid providers
