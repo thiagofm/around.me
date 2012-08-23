@@ -33,8 +33,8 @@
   $xrtml->authenticate();
 
   $obj= array();
-  $obj['longitude'] = $longitude;
-  $obj['latitude'] = $latitude;
+  $obj['lng'] = $longitude + 0.0;
+  $obj['lat'] = $latitude + 0.0;
   $obj['message'] = $message;
   $obj['user_id'] = $user_id;
   $obj['username'] = $username;

@@ -38,20 +38,26 @@
   }
 
   //carregar ultimas mensagens do banco
-  $resultado = $conn->executar_query("SELECT * FROM message WHERE lat < ".$_SESSION['latitude']." + 5 AND lat > ".$_SESSION['latitude']." - 5 AND lng < ".$_SESSION['longitude']." + 5 AND lng > ".$_SESSION['longitude']." - 5 LIMIT 10;");
+  $resultado = $conn->executar_query("SELECT * FROM message WHERE lat < ".$_SESSION['latitude']." + 5 AND lat > ".$_SESSION['latitude']." - 5 AND lng < ".$_SESSION['longitude']." + 5 AND lng > ".$_SESSION['longitude']." - 5 ORDER BY id desc LIMIT 10;");
 
   $result_user = $conn->executar_query('SELECT id, username FROM user;');
 
   $users = array();
 
   while ($row = mysql_fetch_assoc($result_user)) {
-      $users[$row["id"]] = $row["username"];
+    $users[$row["id"]] = $row["username"];
   }
 
   $mensagens = array();
 
   while ($row = mysql_fetch_assoc($resultado)) {
-    $row['username'] = $users[$row['id']];
+    
+    if (array_key_exists($row["id"], $users)) {
+      $row['username'] = $users[$row['id']];
+    } else {
+      $row['username'] = "Anon";
+    }
+
     $mensagens[] = $row;
   }
 

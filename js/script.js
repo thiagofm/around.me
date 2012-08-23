@@ -113,19 +113,21 @@ var message_ballon = undefined;
 var message_seconds_showing = 0;
 var niceScroll;
 
-function add_message(data){
+function add_message(data, show_ballon){
   var time = data.date.split(" ");
   $("#feed .content").append('<p><span class="time">[' + time[1] + ']</span> <span class="user">' + data.username + ':</span> ' + data.message + '</p>');
   $("#feed").getNiceScroll().resize();
-  $("#feed").scrollTop($("#feed .content").height());
-  message_pull.push(data);
+  $("#feed").scrollTop($("#feed .content").height() - $("#feed").height());
+  
+  if (show_ballon) {
+    message_pull.push(data);
+  }
 }
 
 function cron_message() {
   console.log(message_pull);
 
   setTimeout(function(){cron_message();},3000);
-
   if (message_pull.length > 0) {
     if (message_ballon != undefined && message_ballon.b.contentNode != undefined) {
       $(message_ballon.b.contentNode).parent().parent().parent().fadeOut(1000, function() {
@@ -142,11 +144,12 @@ function cron_message() {
 
 function show_message(data) {
   var pos = new google.maps.LatLng(data.lat, data.lng);
+
   message_ballon = new google.maps.InfoWindow({
     map: map,
     position: pos,
     content: '<b>' + data.username + '</b>: '+ data.message,
-    disableAutoPan: true
+    disableAutoPan: false
   });
 
   message_pull.shift();
@@ -163,15 +166,13 @@ var username;
 
 function ajaxAuth(lat,lng){
   $.post('auth.php', {latitude: lat, longitude: lng}, function(data){
-      console.log(obj);
-	  var obj = jQuery.parseJSON(data);
-      console.log(obj);
+	   var obj = jQuery.parseJSON(data);
       username = obj.username;
       user_id = obj.user_id;
       latitude = obj.latitude;
       longitude = obj.longitude;
       $.each(obj.mensagens,function(index,value){
-        add_message(value);
+        add_message(value, false);
       });
   });
 }
@@ -185,9 +186,13 @@ $('#form').submit(function(){
     username: username,
     message: message 
   };
-  console.log(req);
+  $("#submit").hide();
+  $("#sending").show();
   $.post('send_message.php', req, function(data){
-    console.log(data);
+    $("#submit").show();
+    $("#sending").hide();
+    $("#message_input").val("");
+    //console.log(data);
   });
   return false;
 });
@@ -229,12 +234,9 @@ function start_contact(){
 //}
 
 function onMessage(message){
-  console.log('ADJADHAJDLKH');
-  console.log(message);
   message = $.parseJSON(message.message);
   message = message.xrtml.d
-  console.log(message);
-  add_message(message);
+  add_message(message, true);
 }
 
 //$.post('mensagem.php',funciton(){
