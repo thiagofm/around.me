@@ -3,8 +3,8 @@
   {
       var $host = 'localhost';
       var $user = 'root';
-      var $pass = '';
-      var $database = 'bitnami';
+      var $pass = 'bitnami';
+      var $database = 'aroundme';
 
       var $link;
       
