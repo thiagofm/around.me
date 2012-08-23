@@ -14,7 +14,7 @@
 /******************** Elements ********************/
 
 body {
-	background: url("../img/subtle_surface.png") repeat;
+	background: url("../img/background.png") repeat;
 	font-family: Arial;
 	font-size: 14px;
 }
@@ -30,11 +30,8 @@ header {
 }
 
 header h1 {
+	color: #ffffff;
 	vertical-align: top;
-}
-
-footer {
-	height: 10%;
 }
 
 form {
@@ -84,26 +81,12 @@ form {
 #form input[type="text"] {
 	float: left;
 	height: 20px;
-	width: 70%;
-}
-
-#form #sending {
-	display: none;
-	float: left;
-	height: 100%;
-	text-align: center;
-	vertical-align: middle;
-	width: 28%;
+	width: 100%;
 }
 
 #input_text {
 	float: left;
 	height: 100%;
-	width: 70%;
-}
-
-#main {
-	height: 80%;
 }
 
 #map {
@@ -115,16 +98,24 @@ form {
 	width: 100%;
 }
 
+#sending {
+	display: none;
+	float: left;
+	height: 100%;
+	line-height: 100%;
+	text-align: center;
+	vertical-align: middle;
+}
+
 #submit {
 	float: left;
 	height: 100%;
-	width: 28%;
 }
 
 /******************** Media Queries ********************/
 
 /* Smartphones (portrait) ----------- */
-@media only screen and (max-width : 800px) {
+@media only screen and (max-width : 1223px) {
 	#form input[type="submit"] {
 		height: 100%;
 	}
@@ -133,8 +124,12 @@ form {
 		height: 100%;
 	}
 
+	footer {
+		height: 10%;
+	}
+
 	header h1 {
-		font-size: 20px;
+		font-size: 22px;
 		line-height: 20px;
 		padding: 10px 10px 0;
 	}
@@ -143,16 +138,37 @@ form {
 		height: 20px;
 		width: 20px;
 	}
+
+	#input_text {
+		width: 70%;
+	}
+
+	#main {
+		height: 80%;
+	}
+
+	#sending {
+		width: 30%;
+	}
+
+	#submit {
+		width: 30%;
+	}
 }
 
 /* Desktops and laptops ----------- */
 @media only screen and (min-width : 1224px) {
+
 	#form input[type="submit"] {
-		height: 26px;
+		height: 100%;
 	}
 
 	#form input[type="text"] {
-		height: 20px;
+		height: 100%;
+	}
+
+	footer {
+		height: 5%;
 	}
 
 	header h1 {
@@ -164,5 +180,21 @@ form {
 	header img {
 		height: 32px;
 		width: 32px;
+	}
+
+	#input_text {
+		width: 80%;
+	}
+
+	#main {
+		height: 85%;
+	}
+
+	#sending {
+		width: 20%;
+	}
+
+	#submit {
+		width: 20%;
 	}
 }
