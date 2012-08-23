@@ -37,7 +37,9 @@
   <footer>
     <div id="form">
       <form id="message">
-        <input type="text" value="Type your message here..." id="message_input" />
+        <div id="input_text">
+          <input type="text" value="Type your message here..." id="message_input" />
+        </div>
         <div id="submit">
           <input type="submit" value="Send" />
         </div><!-- end div#submit -->

@@ -14,6 +14,7 @@
 /******************** Elements ********************/
 
 body {
+	background: url("../img/subtle_surface.png") repeat;
 	font-family: Arial;
 	font-size: 14px;
 }
@@ -53,7 +54,7 @@ form {
 /******************** Ids ********************/
 
 #feed {
-	background: #efefef;
+	background: #dfdfdf;
 	height: 30%;
 	overflow: hidden;
 }
@@ -93,6 +94,12 @@ form {
 	text-align: center;
 	vertical-align: middle;
 	width: 28%;
+}
+
+#input_text {
+	float: left;
+	height: 100%;
+	width: 70%;
 }
 
 #main {
