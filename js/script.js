@@ -111,11 +111,13 @@ function start_utils() {
 var message_pull = new Array();
 var message_ballon = undefined;
 var message_seconds_showing = 0;
+var niceScroll;
 
 function add_message(data){
   var time = data.date.split(" ");
   $("#feed .content").append('<p><span class="time">[' + time[1] + ']</span> <span class="user">' + data.username + ':</span> ' + data.message + '</p>');
   $("#feed").getNiceScroll().resize();
+  $("#feed").scrollTop($("#feed .content").height());
   message_pull.push(data);
 }
 
