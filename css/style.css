@@ -52,13 +52,15 @@ form {
 /******************** Ids ********************/
 
 #feed {
-	background: #dfdfdf;
+	background: #F1F1F1;
 	height: 30%;
 	overflow: hidden;
 }
 
 #feed .content p {
 	padding: 5px;
+	background: #FAFAFA;
+	margin-top: 3px;
 }
 
 #feed .content .user {

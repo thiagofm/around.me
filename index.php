@@ -87,6 +87,7 @@
   <script src="js/libs/jquery.nicescroll.min.js"></script>
   <script src="js/infobox_packed.js"></script>
   <script src="js/markerclusterer_packed.js"></script>
+  <script src="js/string_to_rgb.jquery.js"></script>
   <script src="js/script.js"></script>
 
   <?php include('realtime.php'); ?>

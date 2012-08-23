@@ -128,7 +128,7 @@ function add_message(data, show_ballon){
     time[1] = "99:99:99";
   }
   
-  $("#feed .content").append('<p><span class="time">[' + time[1] + ']</span> <span class="user">' + data.username + ':</span> ' + data.message + '</p>');
+  $("#feed .content").append('<p><span class="time">[' + time[1] + ']</span> <span class="user" style="color:' + $.stringToRGB(data.username) + '">' + data.username + ':</span> ' + data.message + '</p>');
   $("#feed").getNiceScroll().resize();
   $("#feed").scrollTop($("#feed .content").height() - $("#feed").height());
   add_marker(data);
