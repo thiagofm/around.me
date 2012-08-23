@@ -11,7 +11,6 @@ $(document).ready(function() {
 	start_form();
 	start_map();
 	start_utils();
-  
 });
 
 /*#########################################
@@ -133,8 +132,6 @@ function add_message(data, show_ballon){
 }
 
 function cron_message() {
-  console.log(message_pull);
-
   setTimeout(function(){cron_message();},3000);
   if (message_pull.length > 0) {
     /* Use para balões do Google Maps
@@ -198,15 +195,11 @@ function add_marker(data) {
   var encontrado = false;
 
   for(var i=0; i<user_marker.length; i++) {
-      console.log(user_marker[i]);
-      console.log(data.user_id);
       if (user_marker[i] == data.user_id) {
         encontrado = true;
         break;
       }
   }
-
-  console.log(user_marker);
 
   if (!encontrado) {
     var pos = new google.maps.LatLng(data.lat, data.lng);
@@ -277,27 +270,6 @@ $('#form').submit(function(){
   });
   return false;
 });
-
-/*#########################################
- * EXAMPLE - CONTACT
- *########################################*/
-
-function start_contact(){
-	$("#form_contact").submit(function() {
-		$("#contact-message").html('<img src="images/ajax-loader.gif" alt="Sending" />');
-		$.post($(this).attr("action"), $(this).serialize(), function(data) {
-			var obj = jQuery.parseJSON(data);
-			
-			if (obj.success == true) {
-				$('#contact input[type="text"]').val("");
-				$('#contact textarea').val("");
-			}
-			
-			$("#contact-message").html(obj.html);
-		});
-		return false;
-	});
-}
 
 /*
  * GEOLOCATION - realtime.co

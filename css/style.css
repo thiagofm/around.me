@@ -76,12 +76,16 @@ form {
 	height: 26px;
 	margin-left: 5px;
 	width: 100%;
+
+	-webkit-appearance: none;
 }
 
 #form input[type="text"] {
 	float: left;
 	height: 20px;
 	width: 100%;
+
+	-webkit-appearance: none;
 }
 
 #input_text {

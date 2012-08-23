@@ -9,7 +9,7 @@
   $latitude = $_REQUEST['latitude'];
   $user_id = $_REQUEST['user_id'];
   $username = $_REQUEST['username'];
-  $message = $_REQUEST['message'];
+  $message = strip_tags($_REQUEST['message']);
   $date = date("Y-m-d H:i:s");
 
   $conn = new Mysql();
