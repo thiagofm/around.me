@@ -1,3 +1,6 @@
+<?php
+  session_start();
+?>
 <!doctype html>
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
 <!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
@@ -20,7 +23,30 @@
 <body>
   <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
   <header>
-    <h1>ar<img src="img/logo_32.png"  alt="o" />und.me</h1>
+    <h1>ar<img src="img/logo_32.png" alt="o" class="logo_img"/>und.me</h1>
+    <div id="signin_facebook">
+      <?php
+        if (isset($_SESSION["facebook"])) {
+          echo "facebook as " . $_SESSION["username"];
+        } else {
+      ?>
+      <a href="hybridauth/signin_facebook.php"><img src="img/facebook_32.png" alt="Sign in with Facebook" /></a>
+      <?php    
+        }
+      ?>
+    </div>
+    <div id="signin_twitter">
+      <?php
+        if (isset($_SESSION["twitter"])) {
+          echo "twitter as " . $_SESSION["username"];
+        } else {
+      ?>
+      <a href="hybridauth/signin_twitter.php"><img src="img/twitter_32.png" alt="Sign in with twitter" /></a>
+      <?php    
+        }
+      ?>
+    </div>
+    <div class="clear"></div>
   </header>
 
   <div id="main" role="main">

@@ -67,10 +67,32 @@
   $data = array(
     'user_id' => $_SESSION['user_id'],
     'username' => $_SESSION['username'],
-    'latitude' => $_SESSION['latitude'],
-    'longitude' => $_SESSION['longitude'],
+    'lat' => $_SESSION['latitude'],
+    'lng' => $_SESSION['longitude'],
     'mensagens' => $mensagens
   );
+
+  // includes
+  include 'xrtml/xrtml.php';
+  $xrtml->jsPath = 'http://code.xrtml.org/xrtml-2.0.2.js';
+
+  // connection
+  $xrtml->config->debug = false;
+  $myconnection1 = $xrtml->config->connections->add('myConnection');
+  $myconnection1->url = 'http://developers2.realtime.livehtml.net/server/2.1/';
+  $myconnection1->appKey = '8vVZJN';
+  $myconnection1->authToken = '5aeXQtPISzb2';
+  $myconnection1->privateKey = '5aeXQtPISzb2';
+
+  $mychannel1 = $myconnection1->channels->add('people');
+  $mychannel1->onMessage = "onMessage";
+  $mychannel1->permission = null;
+
+  // auth
+  $xrtml->authenticate();
+
+  $message = $xrtml->createMessage('myTrigger1', 'peopleAction', $data);
+  $message = $xrtml->sendMessage('global', $message);
 
   echo json_encode($data); 
 ?>

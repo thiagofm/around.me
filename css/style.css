@@ -31,6 +31,7 @@ header {
 
 header h1 {
 	color: #ffffff;
+	float: left;
 	vertical-align: top;
 }
 
@@ -111,6 +112,22 @@ form {
 	vertical-align: middle;
 }
 
+#signin_facebook {
+	color: #ffffff;
+	float: right;
+	font-size: 15px;
+	line-height: 30px;
+	vertical-align: middle;
+}
+
+#signin_twitter {
+	color: #ffffff;
+	float: right;
+	font-size: 15px;
+	line-height: 30px;
+	vertical-align: middle;
+}
+
 #submit {
 	float: left;
 	height: 100%;
@@ -138,7 +155,7 @@ form {
 		padding: 10px 10px 0;
 	}
 
-	header img {
+	header .logo_img {
 		height: 20px;
 		width: 20px;
 	}
@@ -153,6 +170,10 @@ form {
 
 	#sending {
 		width: 30%;
+	}
+
+	#signin_facebook, #signin_twitter {
+		padding: 10px 10px 10px 0px;
 	}
 
 	#submit {
@@ -181,7 +202,7 @@ form {
 		padding: 15px 15px 0;
 	}
 
-	header img {
+	header .logo_img {
 		height: 32px;
 		width: 32px;
 	}
@@ -196,6 +217,10 @@ form {
 
 	#sending {
 		width: 20%;
+	}
+
+	#signin_facebook, #signin_twitter {
+		padding: 15px 15px 15px 0px;
 	}
 
 	#submit {

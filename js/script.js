@@ -120,7 +120,14 @@ var message_seconds_showing = 0;
 var niceScroll;
 
 function add_message(data, show_ballon){
-  var time = data.date.split(" ");
+  if (data.date != undefined && data.date != null) {
+    var time = data.date.split(" ");  
+  } else {
+    var time = new Array();
+    time[0] = "9999-99-99";
+    time[1] = "99:99:99";
+  }
+  
   $("#feed .content").append('<p><span class="time">[' + time[1] + ']</span> <span class="user">' + data.username + ':</span> ' + data.message + '</p>');
   $("#feed").getNiceScroll().resize();
   $("#feed").scrollTop($("#feed .content").height() - $("#feed").height());
@@ -174,7 +181,7 @@ function show_message(data) {
       background: "url('img/tipbox.gif') no-repeat",
       width: "280px"
     },
-    disableAutoPan: true,
+    disableAutoPan: false,
     pixelOffset: new google.maps.Size(-140, 10),
     position: pos,
     closeBoxURL: "",
@@ -229,11 +236,12 @@ var username;
 
 function ajaxAuth(lat,lng){
   $.post('auth.php', {latitude: lat, longitude: lng}, function(data){
-	   var obj = jQuery.parseJSON(data);
+	   console.log(data);
+     var obj = jQuery.parseJSON(data);
       username = obj.username;
       user_id = obj.user_id;
-      latitude = obj.latitude;
-      longitude = obj.longitude;
+      latitude = obj.lat;
+      longitude = obj.lng;
 
       add_marker({
         lat: latitude, 
@@ -288,8 +296,19 @@ $('#form').submit(function(){
 
 function onMessage(message){
   message = $.parseJSON(message.message);
-  message = message.xrtml.d
-  add_message(message, true);
+  console.log(message.xrtml.a);
+  if (message.xrtml.a == "peopleAction") {
+    console.log("people");
+    //People notification received
+    message = message.xrtml.d;
+    add_marker(message, true);
+  } else {
+    console.log("message");
+    //Message received
+    message = message.xrtml.d;
+    add_message(message, true);
+  }
+  
 }
 
 //$.post('mensagem.php',funciton(){

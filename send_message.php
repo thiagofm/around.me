@@ -27,7 +27,9 @@
   $myconnection1->url = 'http://developers2.realtime.livehtml.net/server/2.1/';
   $myconnection1->appKey = '8vVZJN';
   $myconnection1->authToken = '5aeXQtPISzb2';
+  $myconnection1->privateKey = '5aeXQtPISzb2';
   $mychannel1 = $myconnection1->channels->add('global');
+  $mychannel1->permission = null;
 
   // auth
   $xrtml->authenticate();
