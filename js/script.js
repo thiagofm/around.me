@@ -236,7 +236,6 @@ var username;
 
 function ajaxAuth(lat,lng){
   $.post('auth.php', {latitude: lat, longitude: lng}, function(data){
-	   console.log(data);
      var obj = jQuery.parseJSON(data);
       username = obj.username;
       user_id = obj.user_id;
@@ -296,14 +295,11 @@ $('#form').submit(function(){
 
 function onMessage(message){
   message = $.parseJSON(message.message);
-  console.log(message.xrtml.a);
   if (message.xrtml.a == "peopleAction") {
-    console.log("people");
     //People notification received
     message = message.xrtml.d;
     add_marker(message, true);
   } else {
-    console.log("message");
     //Message received
     message = message.xrtml.d;
     add_message(message, true);
