@@ -228,9 +228,14 @@ function start_contact(){
   //xRTML.sendMessage('global','Hello Realtime');
 //}
 
-//function onMessage(message){
-  //console.log(message);
-//}
+function onMessage(message){
+  console.log('ADJADHAJDLKH');
+  console.log(message);
+  message = $.parseJSON(message.message);
+  message = message.xrtml.d
+  console.log(message);
+  add_message(message);
+}
 
 //$.post('mensagem.php',funciton(){
 
