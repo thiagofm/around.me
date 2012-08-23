@@ -105,15 +105,48 @@ function handleNoGeolocation(errorFlag) {
 
 function start_utils() {
 	$("#feed").niceScroll("#feed .content");
+  cron_message();
 }
 
+var message_pull = new Array();
+var message_ballon = undefined;
+var message_seconds_showing = 0;
+
 function add_message(data){
+  var time = data.date.split(" ");
+  $("#feed .content").append('<p><span class="time">[' + time[1] + ']</span> <span class="user">' + data.username + ':</span> ' + data.message + '</p>');
+  message_pull.push(data);
+}
+
+function cron_message() {
+  console.log(message_pull);
+
+  setTimeout(function(){cron_message();},3000);
+
+  if (message_pull.length > 0) {
+    if (message_ballon != undefined && message_ballon.b.contentNode != undefined) {
+      $(message_ballon.b.contentNode).parent().parent().parent().fadeOut(1000, function() {
+        message_ballon.close();
+        show_message(message_pull[0]);
+      });
+    } else {
+      show_message(message_pull[0]);
+    }
+  } else {
+    message_seconds_showing = message_seconds_showing + 1000;
+  }
+}
+
+function show_message(data) {
   var pos = new google.maps.LatLng(data.lat, data.lng);
-  var infowindow = new google.maps.InfoWindow({
+  message_ballon = new google.maps.InfoWindow({
     map: map,
     position: pos,
-    content: '<b>' + data.username + '</b>: '+ data.message
+    content: '<b>' + data.username + '</b>: '+ data.message,
+    disableAutoPan: true
   });
+
+  message_pull.shift();
 }
 
 /*#########################################
@@ -127,7 +160,8 @@ var username;
 
 function ajaxAuth(lat,lng){
   $.post('auth.php', {latitude: lat, longitude: lng}, function(data){
-      var obj = jQuery.parseJSON(data);
+      console.log(obj);
+	  var obj = jQuery.parseJSON(data);
       console.log(obj);
       username = obj.username;
       user_id = obj.user_id;

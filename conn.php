@@ -25,7 +25,7 @@
       
       function executar_query($sql)
       {
-          if (is_null($link))
+          if (is_null($this->link))
           {
               $this->conectar();
           }

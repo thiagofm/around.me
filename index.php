@@ -36,8 +36,14 @@
   <footer>
     <div id="form">
       <form id="message">
-        <input type="text" value="Type your message here..." />
-        <input type="submit" value="Send" />
+        <input type="text" value="Type your message here..." id="message_input" />
+        <div id="submit">
+          <input type="submit" value="Send" />
+        </div><!-- end div#submit -->
+        <div id="sending">
+          <img src="img/ajax-loader.gif" alt="sending..." />
+        </div><!-- end div#sending -->
+        <div class="clear"></div>
       </form>
     </div><!-- end div#form -->
   </footer>

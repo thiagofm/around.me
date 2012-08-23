@@ -39,6 +39,10 @@ footer {
 
 /******************** Classes ********************/
 
+.clear {
+	clear: both;
+}
+
 /******************** Ids ********************/
 
 #feed {
@@ -51,12 +55,31 @@ footer {
 	padding: 5px;
 }
 
+#feed .content .user {
+	font-weight: bold;
+}
+
 #form input[type="submit"] {
-	width: 28%;
+	background: #5f78ab;
+	border: 1px solid #29447e;
+	color: #ffffff;
+	font-weight: bold;
+	height: 26px;
+	margin-left: 5px;
+	width: 100%;
 }
 
 #form input[type="text"] {
+	float: left;
+	height: 20px;
 	width: 70%;
+}
+
+#form #sending {
+	display: none;
+	float: left;
+	text-align: center;
+	width: 28%;
 }
 
 #main {
@@ -70,4 +93,9 @@ footer {
 #map_canvas {
 	height: 100%;
 	width: 100%;
+}
+
+#submit {
+	float: left;
+	width: 29%;
 }
