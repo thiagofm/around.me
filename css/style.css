@@ -29,18 +29,25 @@ header {
 }
 
 header h1 {
-	font-size: 20px;
-	padding: 0 5px 0;
+	vertical-align: top;
 }
 
 footer {
 	height: 10%;
 }
 
+form {
+	height: 100%;
+}
+
 /******************** Classes ********************/
 
 .clear {
 	clear: both;
+}
+
+.infoBox p {
+	word-wrap: break-word;
 }
 
 /******************** Ids ********************/
@@ -57,6 +64,10 @@ footer {
 
 #feed .content .user {
 	font-weight: bold;
+}
+
+#form {
+	height: 100%;
 }
 
 #form input[type="submit"] {
@@ -78,7 +89,9 @@ footer {
 #form #sending {
 	display: none;
 	float: left;
+	height: 100%;
 	text-align: center;
+	vertical-align: middle;
 	width: 28%;
 }
 
@@ -97,5 +110,52 @@ footer {
 
 #submit {
 	float: left;
+	height: 100%;
 	width: 28%;
+}
+
+/******************** Media Queries ********************/
+
+/* Smartphones (portrait) ----------- */
+@media only screen and (max-width : 800px) {
+	#form input[type="submit"] {
+		height: 100%;
+	}
+
+	#form input[type="text"] {
+		height: 100%;
+	}
+
+	header h1 {
+		font-size: 20px;
+		line-height: 20px;
+		padding: 10px 10px 0;
+	}
+
+	header img {
+		height: 20px;
+		width: 20px;
+	}
+}
+
+/* Desktops and laptops ----------- */
+@media only screen and (min-width : 1224px) {
+	#form input[type="submit"] {
+		height: 26px;
+	}
+
+	#form input[type="text"] {
+		height: 20px;
+	}
+
+	header h1 {
+		font-size: 30px;
+		line-height: 30px;
+		padding: 15px 15px 0;
+	}
+
+	header img {
+		height: 32px;
+		width: 32px;
+	}
 }

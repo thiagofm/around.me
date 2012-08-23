@@ -7,7 +7,9 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>around.me - See your around</title>
-  <meta name="description" content="">
+  <meta name="description" content="around.me is a geo-map-chat">
+
+  <link id="page_favicon" href="img/favicon.ico" rel="icon" type="image/x-icon" />
 
   <meta name="viewport" content="width=device-width">
   <link rel="stylesheet" href="css/reset.css">
@@ -18,7 +20,7 @@
 <body>
   <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
   <header>
-    <h1>around.me</h1>
+    <h1>ar<img src="img/logo_32.png"  alt="o" />und.me</h1>
   </header>
 
   <div id="main" role="main">
@@ -55,6 +57,8 @@
   </script>
 
   <script src="js/libs/jquery.nicescroll.min.js"></script>
+  <script src="js/infobox_packed.js"></script>
+  <script src="js/markerclusterer_packed.js"></script>
   <script src="js/script.js"></script>
 
   <?php include('realtime.php'); ?>

@@ -52,14 +52,16 @@
 
   while ($row = mysql_fetch_assoc($resultado)) {
     
-    if (array_key_exists($row["id"], $users)) {
-      $row['username'] = $users[$row['id']];
+    if (array_key_exists($row["user_id"], $users)) {
+      $row['username'] = $users[$row['user_id']];
     } else {
       $row['username'] = "Anon";
     }
 
     $mensagens[] = $row;
   }
+
+  $mensagens = array_reverse($mensagens);
 
   // cospe json
   $data = array(

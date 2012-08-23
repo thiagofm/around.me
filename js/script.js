@@ -38,9 +38,11 @@ function start_form() {
 
 var mapOptions;
 var map;
+var markerCluster;
+var markers = new Array();
 
 function start_map() {
-	mapOptions = {
+	 mapOptions = {
           zoom: 12,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         };
@@ -48,17 +50,22 @@ function start_map() {
     map = new google.maps.Map(document.getElementById('map_canvas'),
         mapOptions);
 
+    markerCluster = new MarkerClusterer(map, markers, {
+      maxZoom: 15
+    });
+
     // Try HTML5 geolocation
     if(navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function(position) {
         var pos = new google.maps.LatLng(position.coords.latitude,
                                          position.coords.longitude);
 
+        /*
         var marker = new google.maps.Marker({
           map: map,
           position: pos,
           title: 'You are here!'
-        });
+        });*/
 
         ajaxAuth(position.coords.latitude, position.coords.longitude);
 
@@ -118,7 +125,8 @@ function add_message(data, show_ballon){
   $("#feed .content").append('<p><span class="time">[' + time[1] + ']</span> <span class="user">' + data.username + ':</span> ' + data.message + '</p>');
   $("#feed").getNiceScroll().resize();
   $("#feed").scrollTop($("#feed .content").height() - $("#feed").height());
-  
+  add_marker(data);
+
   if (show_ballon) {
     message_pull.push(data);
   }
@@ -129,8 +137,15 @@ function cron_message() {
 
   setTimeout(function(){cron_message();},3000);
   if (message_pull.length > 0) {
+    /* Use para balões do Google Maps
     if (message_ballon != undefined && message_ballon.b.contentNode != undefined) {
       $(message_ballon.b.contentNode).parent().parent().parent().fadeOut(1000, function() {
+        message_ballon.close();
+        show_message(message_pull[0]);
+      });
+    */
+    if (message_ballon != undefined) {
+        $(message_ballon.content_).fadeOut(1000, function() {
         message_ballon.close();
         show_message(message_pull[0]);
       });
@@ -144,15 +159,70 @@ function cron_message() {
 
 function show_message(data) {
   var pos = new google.maps.LatLng(data.lat, data.lng);
-
+/*
   message_ballon = new google.maps.InfoWindow({
     map: map,
     position: pos,
     content: '<b>' + data.username + '</b>: '+ data.message,
     disableAutoPan: false
   });
+*/
+  var boxText = document.createElement("div");
+  boxText.style.cssText = "border: 1px solid black; margin-top: 8px; background: #ffffff; padding: 5px;";
+  boxText.innerHTML = '<p><b>' + data.username + '</b>: '+ data.message + '</p>';
+
+  var myOptions = {
+    content: boxText,
+    boxStyle: { 
+      background: "url('img/tipbox.gif') no-repeat",
+      width: "280px"
+    },
+    disableAutoPan: true,
+    pixelOffset: new google.maps.Size(-140, 0),
+    position: pos,
+    closeBoxURL: "",
+    isHidden: false,
+    pane: "floatPane",
+    enableEventPropagation: true
+  };
+
+  message_ballon = new InfoBox(myOptions);
+  message_ballon.open(map);
 
   message_pull.shift();
+}
+
+var user_marker = new Array();
+
+function add_marker(data) {
+  var encontrado = false;
+
+  for(var i=0; i<user_marker.length; i++) {
+      console.log(user_marker[i]);
+      console.log(data.user_id);
+      if (user_marker[i] == data.user_id) {
+        encontrado = true;
+        break;
+      }
+  }
+
+  console.log(user_marker);
+
+  if (!encontrado) {
+    var pos = new google.maps.LatLng(data.lat, data.lng);
+
+    var marker = new google.maps.Marker({
+      map: map,
+      position: pos,
+      title: data.username
+    });
+
+    markerCluster.addMarker(marker);
+    //markers.push(marker);
+    user_marker.push(data.user_id);
+
+    
+  }
 }
 
 /*#########################################
@@ -171,6 +241,15 @@ function ajaxAuth(lat,lng){
       user_id = obj.user_id;
       latitude = obj.latitude;
       longitude = obj.longitude;
+
+      add_marker({
+        lat: latitude, 
+        lng: longitude, 
+        user_id: user_id, 
+        username: username, 
+        message: "You are here!"
+      });
+
       $.each(obj.mensagens,function(index,value){
         add_message(value, false);
       });
@@ -186,8 +265,10 @@ $('#form').submit(function(){
     username: username,
     message: message 
   };
+  
   $("#submit").hide();
   $("#sending").show();
+
   $.post('send_message.php', req, function(data){
     $("#submit").show();
     $("#sending").hide();
