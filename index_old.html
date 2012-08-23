@@ -1,3 +1,4 @@
+<?php include('geolocation.php'); ?>
 <!doctype html>
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
 <!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
@@ -28,22 +29,21 @@
 
     <div id="feed">
       <div class="content">
+        <p><span class="time">10:11</span> <span class="user">Anonymous</span> Hey, see me here!</p>
+        <p><span class="time">10:11</span> <span class="user">Anonymous</span> Hey, see me here!</p>
+        <p><span class="time">10:11</span> <span class="user">Anonymous</span> Hey, see me here!</p>
+        <p><span class="time">10:11</span> <span class="user">Anonymous</span> Hey, see me here!</p>
+        <p><span class="time">10:11</span> <span class="user">Anonymous</span> Hey, see me here!</p>
+        <p><span class="time">10:11</span> <span class="user">Anonymous</span> Hey, see me here!</p>
+        <p><span class="time">10:11</span> <span class="user">Anonymous</span> Hey, see me here!</p>
       </div><!-- end div.content -->
     </div><!-- end div#feed -->
   </div><!-- end div#main -->
 
   <footer>
     <div id="form">
-      <form id="message">
-        <input type="text" value="Type your message here..." id="message_input" />
-        <div id="submit">
-          <input type="submit" value="Send" />
-        </div><!-- end div#submit -->
-        <div id="sending">
-          <img src="img/ajax-loader.gif" alt="sending..." />
-        </div><!-- end div#sending -->
-        <div class="clear"></div>
-      </form>
+      <input type="text" value="Type your message here..." />
+      <input type="submit" value="Send" />
     </div><!-- end div#form -->
   </footer>
 
@@ -56,5 +56,6 @@
 
   <script src="js/libs/jquery.nicescroll.min.js"></script>
   <script src="js/script.js"></script>
+
 </body>
 </html>

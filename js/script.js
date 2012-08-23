@@ -19,13 +19,13 @@ $(document).ready(function() {
  *########################################*/
 
 function start_form() {
-	$("#message").focusin(function() {
+	$("#message_input").focusin(function() {
 		if ($(this).val() == "Type your message here...") {
 			$(this).val("");
 		}
 	});
 
-	$("#message").focusout(function() {
+	$("#message_input").focusout(function() {
 		if ($(this).val() == "") {
 			$(this).val("Type your message here...");
 		}
@@ -115,6 +115,7 @@ var message_seconds_showing = 0;
 function add_message(data){
   var time = data.date.split(" ");
   $("#feed .content").append('<p><span class="time">[' + time[1] + ']</span> <span class="user">' + data.username + ':</span> ' + data.message + '</p>');
+  $("#feed").getNiceScroll().resize();
   message_pull.push(data);
 }
 
