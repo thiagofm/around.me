@@ -35,8 +35,10 @@
 
   <footer>
     <div id="form">
-      <input type="text" value="Type your message here..." />
-      <input type="submit" value="Send" />
+      <form id="message">
+        <input type="text" value="Type your message here..." />
+        <input type="submit" value="Send" />
+      </form>
     </div><!-- end div#form -->
   </footer>
 
@@ -49,12 +51,5 @@
 
   <script src="js/libs/jquery.nicescroll.min.js"></script>
   <script src="js/script.js"></script>
-<<<<<<< HEAD
-=======
-
-  <?php include('geolocation.php'); ?>
-  <?php echo "hi"; ?>
-
->>>>>>> 15f14b51ef17425fb75511ca0794bcb961629aa3
 </body>
 </html>

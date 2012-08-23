@@ -1,8 +1,7 @@
 <?php
   class Mysql
   {
-
-      var $host = '192.168.43.113';
+      var $host = '192.168.88.176';
       var $user = 'root';
       var $pass = '';
       var $database = 'aroundme';

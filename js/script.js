@@ -68,7 +68,7 @@ function start_map() {
           position: pos,
           content: 'Location found using HTML5.'
         });
-		*/
+        */
 
         map.setCenter(pos);
       }, function() {
@@ -116,21 +116,44 @@ function add_message(data){
   });
 }
 
-
 /*#########################################
  * AJAXES
  *########################################*/
 
+var latitude;
+var longitude;
+var user_id;
+var username;
+
 function ajaxAuth(lat,lng){
-  $.post('auth.php',
-    {latitude: lat, longitude: lng}, function(data){
+  $.post('auth.php', {latitude: lat, longitude: lng}, function(data){
       var obj = jQuery.parseJSON(data);
-      console.log(data);
+      console.log(obj);
+      username = obj.username;
+      user_id = obj.user_id;
+      latitude = obj.latitude;
+      longitude = obj.longitude;
       $.each(obj.mensagens,function(index,value){
         add_message(value);
       });
   });
 }
+
+$('#form').submit(function(){
+  message = $(this).find('input[type=text]').val();
+  var req = {
+    latitude: latitude,
+    longitude: longitude,
+    user_id: user_id,
+    username: username,
+    message: message 
+  };
+  console.log(req);
+  $.post('send_message.php', req, function(data){
+    console.log(data);
+  });
+  return false;
+});
 
 /*#########################################
  * EXAMPLE - CONTACT
