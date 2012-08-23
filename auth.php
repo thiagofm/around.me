@@ -14,7 +14,7 @@
   if(isset($_SESSION['user_id']) && !isset($_REQUEST['username'])){
 
   } else {
-
+/*
     if (isset($_REQUEST['username'])) {
       $username = $_REQUEST['username'];
     } else {
@@ -22,14 +22,16 @@
       $username = uniqid('user_');
       $username = substr($username, 0, 9);
     }
+*/
 
+    $username = uniqid('user_');
     $found_name = false;
 
     while(!$found_name){
       $resultado = $conn->executar_query("SELECT id FROM user WHERE username = '".$username."';");
       if(mysql_num_rows($resultado)){
         $username = uniqid('user_');
-        $username = substr($username, 0, 9);
+        //$username = substr($username, 0, 9);
       } else {
         $found_name = true;
       }

@@ -260,7 +260,7 @@ $('#form').submit(function(){
   message = $(this).find('input[type=text]').val();
 
   //change nickname
-  if (message.search("nickname:") == 0) {
+  /*if (message.search("nickname:") == 0) {
     $("#submit").hide();
     $("#sending").show();
 
@@ -275,7 +275,7 @@ $('#form').submit(function(){
         $("#sending").hide();
         $("#message_input").val("");
     });
-  } else {
+  } else {*/
     var req = {
       latitude: latitude,
       longitude: longitude,
@@ -293,7 +293,7 @@ $('#form').submit(function(){
       $("#message_input").val("");
       //console.log(data);
     });
-  }
+  //}
 
   
   return false;
