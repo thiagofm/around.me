@@ -11,17 +11,23 @@
 
   $conn = new Mysql();
 
-  if(isset($_SESSION['user_id'])){
+  if(isset($_SESSION['user_id']) && !isset($_REQUEST['username'])){
+
   } else {
 
-    //gerar nome do usuario
-    $username = uniqid('anon');
+    if (isset($_REQUEST['username'])) {
+      $username = $_REQUEST['username'];
+    } else {
+      //gerar nome do usuario
+      $username = uniqid('anon');
+    }
+
     $found_name = false;
 
     while(!$found_name){
       $resultado = $conn->executar_query("SELECT id FROM user WHERE username = '".$username."';");
       if(mysql_num_rows($resultado)){
-        $username = uniqid('anon');
+        $username = uniqid('user_');
       } else {
         $found_name = true;
       }

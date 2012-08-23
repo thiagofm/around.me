@@ -258,23 +258,44 @@ function ajaxAuth(lat,lng){
 
 $('#form').submit(function(){
   message = $(this).find('input[type=text]').val();
-  var req = {
-    latitude: latitude,
-    longitude: longitude,
-    user_id: user_id,
-    username: username,
-    message: message 
-  };
-  
-  $("#submit").hide();
-  $("#sending").show();
 
-  $.post('send_message.php', req, function(data){
-    $("#submit").show();
-    $("#sending").hide();
-    $("#message_input").val("");
-    //console.log(data);
-  });
+  //change nickname
+  if (message.search("nickname:") == 0) {
+    $("#submit").hide();
+    $("#sending").show();
+
+    $.post('auth.php', {latitude: latitude, longitude: longitude, username: message.replace("nickname:","")}, function(data){
+        var obj = jQuery.parseJSON(data);
+        username = obj.username;
+        user_id = obj.user_id;
+        latitude = obj.lat;
+        longitude = obj.lng;
+
+        $("#submit").show();
+        $("#sending").hide();
+        $("#message_input").val("");
+    });
+  } else {
+    var req = {
+      latitude: latitude,
+      longitude: longitude,
+      user_id: user_id,
+      username: username,
+      message: message 
+    };
+    
+    $("#submit").hide();
+    $("#sending").show();
+
+    $.post('send_message.php', req, function(data){
+      $("#submit").show();
+      $("#sending").hide();
+      $("#message_input").val("");
+      //console.log(data);
+    });
+  }
+
+  
   return false;
 });
 

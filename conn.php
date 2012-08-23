@@ -3,6 +3,7 @@
   {
       var $host = 'localhost';
       var $user = 'root';
+      //var $pass = '';
       var $pass = 'bitnami';
       var $database = 'aroundme';
 

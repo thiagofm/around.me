@@ -49,14 +49,14 @@
         $username = $twitter_user_profile->displayName;
         $resultado = $conn->executar_query("SELECT * FROM user WHERE username = '".$username."';");
 		if (mysql_num_rows($resultado) == 0) {
-            $resultado = $conn->executar_query('UPDATE user SET username = "' . $twitter_user_profile->displayName . '" WHERE id = ' . $_SESSION['user_id']);    
+            $resultado = $conn->executar_query('UPDATE user SET username = "@' . $twitter_user_profile->displayName . '" WHERE id = ' . $_SESSION['user_id']);    
         } else {
             while ($row = mysql_fetch_assoc($resultado)) {
                 $_SESSION['user_id'] = $row["user_id"];
             }
         }
         
-		$_SESSION['username'] = $twitter_user_profile->displayName;
+		$_SESSION['username'] = "@" . $twitter_user_profile->displayName;
 		$_SESSION['twitter'] = true;
 		header('Location: ' . str_replace("/hybridauth/signin_twitter.php", "", curPageURL()));
 	}
