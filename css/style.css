@@ -106,11 +106,16 @@ form {
 }
 
 #sending {
+	background: #5f78ab;
 	display: none;
 	float: left;
 	height: 100%;
 	line-height: 100%;
 	text-align: center;
+	vertical-align: middle;
+}
+
+#sending img {
 	vertical-align: middle;
 }
 
@@ -144,6 +149,7 @@ form {
 	}
 
 	#form input[type="text"] {
+		font-size: 20px;
 		height: 100%;
 	}
 
@@ -171,6 +177,7 @@ form {
 	}
 
 	#sending {
+		font-size: 30px;
 		width: 30%;
 	}
 
@@ -191,6 +198,7 @@ form {
 	}
 
 	#form input[type="text"] {
+		font-size: 15px;
 		height: 100%;
 	}
 
@@ -218,6 +226,7 @@ form {
 	}
 
 	#sending {
+		font-size: 15px;
 		width: 20%;
 	}
 
