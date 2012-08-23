@@ -19,7 +19,8 @@
       $username = $_REQUEST['username'];
     } else {
       //gerar nome do usuario
-      $username = uniqid('anon');
+      $username = uniqid('user_');
+      $username = substr($username, 0, 9);
     }
 
     $found_name = false;
@@ -28,6 +29,7 @@
       $resultado = $conn->executar_query("SELECT id FROM user WHERE username = '".$username."';");
       if(mysql_num_rows($resultado)){
         $username = uniqid('user_');
+        $username = substr($username, 0, 9);
       } else {
         $found_name = true;
       }
