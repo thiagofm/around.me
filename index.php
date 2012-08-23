@@ -26,9 +26,9 @@
     <h1>ar<img src="img/logo_32.png" alt="o" class="logo_img"/>und.me</h1>
     <div id="signin_facebook">
       <?php
-        if (isset($_SESSION["facebook"])) {
+        if (isset($_SESSION["facebook"]) && $_SESSION["facebook"]) {
           echo "facebook as " . $_SESSION["username"];
-        } else {
+        } else if (!isset($_SESSION["twitter"]) || !$_SESSION["twitter"]) {
       ?>
       <a href="hybridauth/signin_facebook.php"><img src="img/facebook_32.png" alt="Sign in with Facebook" /></a>
       <?php    
@@ -37,9 +37,9 @@
     </div>
     <div id="signin_twitter">
       <?php
-        if (isset($_SESSION["twitter"])) {
+        if (isset($_SESSION["twitter"]) && $_SESSION["twitter"]) {
           echo "twitter as " . $_SESSION["username"];
-        } else {
+        } else if (!isset($_SESSION["facebook"]) || !$_SESSION["facebook"]) {
       ?>
       <a href="hybridauth/signin_twitter.php"><img src="img/twitter_32.png" alt="Sign in with twitter" /></a>
       <?php    

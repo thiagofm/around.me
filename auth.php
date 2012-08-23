@@ -35,6 +35,8 @@
     $_SESSION['username'] = $username;
     $_SESSION['longitude'] = $longitude;
     $_SESSION['latitude'] = $latitude;
+    $_SESSION['twitter'] = false;
+    $_SESSION['facebook'] = false;
   }
 
   //carregar ultimas mensagens do banco
