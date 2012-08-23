@@ -178,7 +178,7 @@ function show_message(data) {
       width: "280px"
     },
     disableAutoPan: true,
-    pixelOffset: new google.maps.Size(-140, 0),
+    pixelOffset: new google.maps.Size(-140, 10),
     position: pos,
     closeBoxURL: "",
     isHidden: false,

@@ -1,10 +1,10 @@
 <?php
   class Mysql
   {
-      var $host = '192.168.88.176';
+      var $host = 'localhost';
       var $user = 'root';
       var $pass = '';
-      var $database = 'aroundme';
+      var $database = 'bitnami';
 
       var $link;
       
