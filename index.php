@@ -56,5 +56,7 @@
 
   <script src="js/libs/jquery.nicescroll.min.js"></script>
   <script src="js/script.js"></script>
+
+  <?php include('realtime.php'); ?>
 </body>
 </html>
