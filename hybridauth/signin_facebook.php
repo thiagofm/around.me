@@ -56,7 +56,7 @@
             }
         }
         
-		$_SESSION['username'] = $twitter_user_profile->displayName;
+		$_SESSION['username'] = $facebook_user_profile->displayName;
 		$_SESSION['facebook'] = true;
 		header('Location: ' . str_replace("/hybridauth/signin_facebook.php", "", curPageURL()));
 	}

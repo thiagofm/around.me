@@ -13,7 +13,7 @@
 
 return 
 	array(
-		"base_url" => "http://tinyurl.com/mearound/hybridauth/", 
+		"base_url" => "http://ec2-177-71-134-41.sa-east-1.compute.amazonaws.com/hybridauth/", 
 		//"base_url" => "http://localhost/aroundme/hybridauth/", 
 
 		"providers" => array ( 
